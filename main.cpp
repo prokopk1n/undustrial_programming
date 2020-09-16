@@ -62,9 +62,9 @@ double quadratic_equation (double a, double b, double c, double & x1, double & x
 
 int main()
 {
-    double a, b, c;
-    double x1, x2;
-    double res;
+    double a=0, b=0, c=0;
+    double x1=0, x2=0;
+    double res=0;
 
     #ifdef MODE
 

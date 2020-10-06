@@ -3,7 +3,7 @@
 
 Есть два типа запуска.
 
-Makefile
+Сначала команда Makefile.
 Далее:
 1) ./lab2 test - режим тестирования
 2) ./lab2 file_source.txt file_for_direct_sort.txt file_for_reverse_sort.txt file_for_without_sort.txt 

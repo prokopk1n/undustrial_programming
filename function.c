@@ -13,7 +13,7 @@
 
 int is_punkt(char c)
 {
-    char punkt_marks[] = {'.',',',';',':','!','?','-','"','\'','\0'};
+    char punkt_marks[] = {'.',',',';',':','!','?','-','"','\'','(',')',']','[','\0'};
 
     for (int i=0;punkt_marks[i]!='\0';++i)
     {
@@ -129,6 +129,7 @@ void quick_sort(char ** array, int begin, int end, int flag) // flag 1 - for dir
 
     pre_sort(array,begin,end,flag);
 
+
     int i = begin, j = end;
     while (i<j){
         if (my_strcmp(array[i],array[j],flag)==-1)
@@ -172,6 +173,7 @@ char * copy_file_to_memory(char * name)
     assert(read(handle_file_from,source_file,size_of_file)==size_of_file);
 
     assert(close(handle_file_from)==0);
+
     return source_file;
 }
 
@@ -188,9 +190,8 @@ char ** create_array_of_pointers(char * source_file, int * size)
     do
     {
         array_of_pointers = realloc(array_of_pointers, (cur_size + step_for_realloc)*sizeof(char *));
-        cur_size=cur_size+step_for_realloc;
 
-        for (int i = 0;i<step_for_realloc;++i)
+        for (int i = cur_size;i<cur_size+step_for_realloc;++i)
         {
 
             if ((*source_file) == '\n')
@@ -211,11 +212,14 @@ char ** create_array_of_pointers(char * source_file, int * size)
             }
 
             source_file = strchr(source_file, '\n');
-            *source_file = '\0';
+            (*source_file) = '\0';
             ++source_file;
         }
 
+    cur_size=cur_size+step_for_realloc;
+
     } while (flag);
+
     return array_of_pointers;
 }
 
